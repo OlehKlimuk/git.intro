@@ -1,7 +1,7 @@
 pipeline {
     agent { label 'main' }
 
-    
+    stages {
         stage('Delete workspace before build starts') {
             steps {
                 echo 'Deleting workspace'
