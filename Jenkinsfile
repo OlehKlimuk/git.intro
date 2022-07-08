@@ -1,6 +1,6 @@
 pipeline {
     agent  any
-    
+    stages {
         stage("clone repo from github") {
             steps {
                 echo " ============== start cloning =================="
