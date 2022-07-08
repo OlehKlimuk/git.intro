@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Test') {
             steps{
-                dir('lesson-1') {
+                dir('proj') {
                     sh "ls -la "
                     sh "pwd"
                 }
@@ -26,7 +26,7 @@ pipeline {
         }
        stage('Build docker image') {
             steps{
-                dir('lesson-1') {
+                dir('proj') {
                     sh 'docker build -t bakavets/jenkins-images:0.4 .'
                 }
             }
