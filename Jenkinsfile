@@ -13,7 +13,7 @@ pipeline {
         stage("delete all if exists") {
             steps {
                 echo " ============== start deleting =================="
-                dir ('.') {
+                dir  {
                     sh '''
                     docker stop $(docker ps -a -q)
                     docker rm $(docker ps -a -q)
@@ -26,7 +26,7 @@ pipeline {
         stage("clone repo from github") {
             steps {
                 echo " ============== start cloning =================="
-                dir ('.') {
+                dir  {
                     sh 'git clone https://github.com/OlehKlimuk/git.intro.git'
                 }
             }
@@ -35,7 +35,7 @@ pipeline {
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
-                dir ('.') {
+                dir  {
                     sh 'cd olehepam && docker build -t my_app . '
                 }
             }
