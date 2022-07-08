@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Test') {
             steps{
-                dir('proj') {
+                dir('111') {
                     sh "ls -la "
                     sh "pwd"
                 }
@@ -24,25 +24,11 @@ pipeline {
                     sh "pwd"
             }
         }
-       stage('Build docker image') {
+        stage('Build docker image') {
             steps{
-                dir('proj') {
+                dir('') {
                     sh 'docker build -t bakavets/jenkins-images:0.4 .'
                 }
-            }
-        }
-        stage('Push docker image to DockerHub') {
-            steps{
-                withDockerRegistry(credentialsId: 'dockerhub-cred-bakavets', url: 'https://index.docker.io/v1/') {
-                    sh '''
-                        docker push bakavets/jenkins-images:0.4
-                    '''
-                }
-            }
-        }
-        stage('Delete docker image locally') {
-            steps{
-                sh 'docker rmi bakavets/jenkins-images:0.4'
             }
         }
     }
