@@ -1,3 +1,4 @@
+#!groovy
 properties([disableConcurrentBuilds()])
 
 pipeline {
@@ -26,7 +27,7 @@ pipeline {
             steps {
                 echo " ============== start cloning =================="
                 dir ('.') {
-                    sh 'git clone https://github.com/OlehKlimuk/git.intro.git'
+                    sh 'git clone https://github.com/Stiff228/DevOps_final_project'
                 }
             }
         }
@@ -35,7 +36,7 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                 dir ('.') {
-                    sh 'cd olehklimuk && docker build -t my_app . '
+                    sh 'cd DevOps_final_project && docker build -t my_app . '
                 }
             }
         }
