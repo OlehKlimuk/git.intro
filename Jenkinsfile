@@ -27,7 +27,7 @@ pipeline {
             steps {
                 echo " ============== start cloning =================="
                 dir ('.') {
-                    sh 'git clone https://github.com/Stiff228/DevOps_final_project'
+                    sh 'git clone https://github.com/OlehKlimuk/git.intro.git'
                 }
             }
         }
@@ -36,7 +36,7 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                 dir ('.') {
-                    sh 'cd DevOps_final_project && docker build -t my_app . '
+                    sh 'cd olehepam && docker build -t my_app . '
                 }
             }
         }
