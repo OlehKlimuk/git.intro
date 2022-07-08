@@ -1,19 +1,6 @@
 pipeline {
     agent  any
-    stages {
-        stage("delete all if exists") {
-            steps {
-                echo " ============== start deleting =================="
-                dir ('.') {
-                    sh '''
-                    docker stop $(docker ps -a -q)
-                    docker rm $(docker ps -a -q)
-                    docker rmi $(docker images -q)
-                    '''
-                }
-            }
-        }
-
+    s
     stages {
         stage("clone repo from github") {
             steps {
