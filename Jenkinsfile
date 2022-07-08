@@ -1,7 +1,27 @@
+properties([disableConcurrentBuilds()])
+
 pipeline {
-    agent  any
-   
+    agent { 
+        label 'main'
+        }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestamps()
+    }
     stages {
+        stage("delete all if exists") {
+            steps {
+                echo " ============== start deleting =================="
+                dir ('.') {
+                    sh '''
+                    docker stop $(docker ps -a -q)
+                    docker rm $(docker ps -a -q)
+                    docker rmi $(docker images -q)
+                    '''
+                }
+            }
+        }
+
         stage("clone repo from github") {
             steps {
                 echo " ============== start cloning =================="
@@ -15,7 +35,7 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                 dir ('.') {
-                    sh 'cd olehepam && docker build -t my_app . '
+                    sh 'cd DevOps_final_project && docker build -t my_app . '
                 }
             }
         }
