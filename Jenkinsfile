@@ -35,7 +35,7 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                 dir ('.') {
-                    sh 'cd DevOps_final_project && docker build -t my_app . '
+                    sh 'cd olehklimuk && docker build -t my_app . '
                 }
             }
         }
