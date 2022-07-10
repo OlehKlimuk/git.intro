@@ -3,8 +3,8 @@ ENV TZ=Europe/Kiev
 RUN apt-get -y update
 RUN DEBIAN_FRONTEND="noninteractive"\
   apt-get -y install apache2
-RUN echo 'ServerName localhost' >> /etc/apache2/apache2.conf && systemctl reload apache2
-COPY  /index.html /var/www/html/index.html
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf 
+COPY . /var/www/html/
 
 
 CMD ["/usr/sbin/apache2ctl","-DFOREGROUND"]
