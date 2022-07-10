@@ -3,6 +3,7 @@ ENV TZ=Europe/Kiev
 RUN apt-get -y update
 RUN DEBIAN_FRONTEND="noninteractive"\
   apt-get -y install apache2
+RUN systemctl status apache2.service -l --no-pager
 COPY  /index.html /var/www/html/index.html
 
 RUN echo '. /etc/apache2/envvars' > /root/run_apache.sh && \
