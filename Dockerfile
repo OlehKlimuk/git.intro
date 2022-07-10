@@ -1,4 +1,4 @@
-FROM ubuntu 20.04
+FROM ubuntu:20.04
 ENV TZ=Europe/Kiev
 RUN apt-get -y update
 RUN DEBIAN_FRONTEND="noninteractive"\
