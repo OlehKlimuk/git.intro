@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 ENV TZ=Europe/Kiev
 RUN apt-get -y update
 RUN DEBIAN_FRONTEND="noninteractive"\
-  apt-get-y install apache2
+  apt-get 6-y install apache2
 COPY  /index.html /var/www/html/index.html
 
 RUN echo '. /etc/apache2/envvars' > /root/run_apache.sh && \
