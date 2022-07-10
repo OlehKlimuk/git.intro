@@ -27,8 +27,23 @@ pipeline {
         stage('Build docker image') {
             steps{
                 dir('') {
-                    sh 'docker build -t bakavets/jenkins-images:0.4 .'
+                    sh 'docker build -t olehepam/proj .'
                 }
+            }
+        }
+         stage('Push docker image to DockerHub') {
+            steps{
+                withDockerRegistry(credentialsId: 'dockerhu-cred-oleh', url: 'https://index.docker.io/v1/') {
+                    sh '''
+                        docker push olehepam/proj
+                    '''
+                }
+            }
+         }
+         stage("docker run") {
+            steps {
+                echo " ============== start run image =================="
+                sh 'docker run -p 80:8000 proj'
             }
         }
     }
