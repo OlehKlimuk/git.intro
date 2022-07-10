@@ -43,7 +43,7 @@ pipeline {
          stage("docker run") {
             steps {
                 echo " ============== start run image =================="
-                sh 'docker run -p 80:8000 proj'
+                sh 'docker run -p 80:8000 olehepam/proj'
             }
         }
     }
