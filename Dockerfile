@@ -7,7 +7,7 @@ RUN apt-get -y update && apt-get -y install nginx
 
 # Copy the Nginx config
 
-COPY . /usr/share/nginx/html/index.html
+COPY . /volumes/nginx_data/_data
 
 # Expose the port for access
 EXPOSE 80/tcp
