@@ -8,13 +8,7 @@ pipeline {
                 deleteDir()
             }
         }
-        stage('stop and rm'){
-            steps {
-                sh 'docker stop $(docker ps -a -q)'
-                sh 'docker rm $(docker ps -a -q)'
-            }
-        }
-
+       
         stage('Checkout') {
             steps{
                 git branch: 'main',
