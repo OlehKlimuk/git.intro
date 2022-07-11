@@ -1,5 +1,7 @@
-FROM php:7.0-apache
-COPY . /var/www/html/
+FROM nginx
+RUN rm /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY content /usr/share/nginx/html
+COPY conf /etc/nginx
+VOLUME /usr/share/nginx/html
+VOLUME /etc/nginx
 EXPOSE 80
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
-CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
