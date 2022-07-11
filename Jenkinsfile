@@ -42,7 +42,7 @@ pipeline {
          }
          stage("docker run") {
             steps {
-                sh 'docker run -p 8088:80 olehepam/proj'
+                sh 'docker run -p 8089:80 olehepam/proj'
             }
         }
     }
