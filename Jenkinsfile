@@ -42,7 +42,7 @@ pipeline {
          }
          stage("docker run") {
             steps {
-                sh 'docker run -dit olehepam/proj -p 8090:80 my-apache2'
+                sh 'docker run -dit --name my-running-app -p 8091:80 olehepam/proj'
             }
         }
     }
